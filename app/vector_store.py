@@ -31,6 +31,9 @@ def load_vector_store():
 
 
 def search(query, k=3):
+    global index, documents
+    if index is None or documents is None:
+        load_vector_store()
 
     query_embedding = embed_model.encode(
         [query],
